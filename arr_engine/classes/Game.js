@@ -1,7 +1,8 @@
 class GameInstance {
     constructor() {
         this._gameLoop = new GameLoop();
-        this._gameWindow = new GameWindow(this._gameLoop);
+        this._gameInputController = new GameInputController();
+        this._gameWindow = new GameWindow(this._gameLoop, this._gameInputController);
 
     }
 

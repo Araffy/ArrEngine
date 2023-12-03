@@ -10,6 +10,7 @@
         <canvas width="500" height="500" id="game-canvas"></canvas>
     </body>
 
+    <script src="arr_engine/classes/GameInputController.js"></script>
     <script src="arr_engine/classes/GameLoop.js"></script>
     <script src="arr_engine/classes/GameWindow.js"></script>
     <script src="arr_engine/classes/Game.js"></script>
@@ -17,10 +18,20 @@
     <script>
         var game = new GameInstance();
         game.init();
+        var i = 0;
 
         game._gameLoop.update(() => {
-            game._gameWindow.drawCircle(100, 100, 50, "red");
         });
+
+        game._gameWindow._gameInputController.handleInput('ArrowUp',() =>{
+            game._gameWindow.drawCircle(100,100,50,'blue');
+        });
+
+        game._gameWindow._gameInputController.handleInput('ArrowLeft',() =>{
+            game._gameWindow.drawCircle(150 + i++,100,50,'green');
+        });
+
+
 
 
     </script>
