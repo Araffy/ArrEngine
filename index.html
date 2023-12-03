@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+        <canvas width="500" height="500" id="game-canvas"></canvas>
+    </body>
+
+    <script src="arr_engine/classes/GameLoop.js"></script>
+    <script src="arr_engine/classes/GameWindow.js"></script>
+    <script src="arr_engine/classes/Game.js"></script>
+
+    <script>
+        var game = new GameInstance();
+        game.init();
+
+        game._gameLoop.update(() => {
+            game._gameWindow.drawCircle(100, 100, 50, "red");
+        });
+
+
+    </script>
+</html>
