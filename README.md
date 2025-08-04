@@ -86,6 +86,8 @@ game.init();
 <script type="module" src="main.js"></script>
 ```
 
+Joke around, have fun and try it out. Think of this setup as a fun sandbox to play around.
+
 ---
 
 ## 🛠️ Architecture Overview
@@ -120,5 +122,10 @@ MIT — Free to use and modify.
 
 ## 🙌 Credits
 
-Created from scratch without docs, just imagination and Unity inspiration.  
+Created from scratch without docs — just imagination and inspiration from Unity.
 Designed to be understandable, hackable, and yours to build upon.
+
+Currently not in development as a standalone package, but maybe in the near future.
+I’ve been on a break for about 2 years, and decided to give it another go.
+Still figuring out the best direction to take things, but I hope you enjoy what’s here.
+I’ll try to document everything as I go.
