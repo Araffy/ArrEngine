@@ -1,14 +1,14 @@
-class GameInputController {
-    constructor() {
-        this._callback = null;
-    }
+export class GameInputController {
+  constructor() {
+    this._callbacks = {};
+    document.addEventListener("keydown", (e) => {
+      if (this._callbacks[e.key]) {
+        this._callbacks[e.key]();
+      }
+    });
+  }
 
-    handleInput(key, callback) {
-        document.addEventListener("keydown", (e) => {
-            if (e.key === key) {
-                this._callback = callback;
-                this._callback();
-            }
-        });
-    }
+  handleInput(key, callback) {
+    this._callbacks[key] = callback;
+  }
 }

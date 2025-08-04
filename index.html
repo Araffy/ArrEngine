@@ -1,38 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Document</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-    <body>
-        <canvas width="500" height="500" id="game-canvas"></canvas>
-    </body>
-
-    <script src="arr_engine/classes/GameInputController.js"></script>
-    <script src="arr_engine/classes/GameLoop.js"></script>
-    <script src="arr_engine/classes/GameWindow.js"></script>
-    <script src="arr_engine/classes/Game.js"></script>
-
-    <script>
-        var game = new GameInstance();
-        game.init();
-        var i = 0;
-
-        game._gameLoop.update(() => {
-        });
-
-        game._gameWindow._gameInputController.handleInput('ArrowUp',() =>{
-            game._gameWindow.drawCircle(100,100,50,'blue');
-        });
-
-        game._gameWindow._gameInputController.handleInput('ArrowLeft',() =>{
-            game._gameWindow.drawCircle(150 + i++,100,50,'green');
-        });
-
-
-
-
-    </script>
+  <body>
+    <canvas width="500" height="500" id="game-canvas"></canvas>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
