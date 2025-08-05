@@ -22,13 +22,13 @@ export class GameLoop {
     if (this._showFps) {
       var fpsElement = document.createElement("p");
       fpsElement.style.position = "absolute";
-      fpsElement.style.left = "0";
+      fpsElement.style.right = "20px";
       fpsElement.style.top = "0";
       fpsElement.style.color = "red";
       document.body.appendChild(fpsElement);
 
       setInterval(() => {
-        fpsElement.innerHTML = Math.round(1000 / this._interval);
+        fpsElement.innerHTML = "fps: " + Math.round(1000 / this._interval);
       }, 1000);
     }
   }
@@ -43,7 +43,7 @@ export class GameLoop {
       const delta = time - this._lastTime;
       if (delta > this._interval) {
         this._lastTime = time - (delta % this._interval);
-        const deltaTime = delta / 1000;
+        const deltaTime = Math.min(delta / 1000, 0.033); // Clamp to max ~30 FPS
         this._callback(deltaTime);
       }
       this._frame();

@@ -11,6 +11,56 @@ export class GameInstance {
       this._gameInputController,
       canvas
     );
+    this._objects = [];
+    this._camera = null;
+  }
+
+  setCamera(camera) {
+    this._camera = camera;
+  }
+
+  addObject(obj) {
+    this._objects.push(obj);
+    if (!obj.started) {
+      obj.start();
+      obj.started = true;
+    }
+  }
+
+  init() {
+    this._gameLoop.awake(() => {
+      console.log("Game initialized and ready to run.");
+    });
+
+    this._gameLoop.update((dt) => this.update(dt));
+  }
+
+  update(dt) {
+    const ctx = this._gameWindow._context;
+
+    this._gameWindow.clear();
+
+    if (this._camera) {
+      this._camera.apply(ctx);
+    }
+
+    this._objects.forEach((obj) => {
+      if (!obj.cameraChild) {
+        obj.update(dt);
+        obj.draw(ctx);
+      }
+    });
+
+    if (this._camera) {
+      this._camera.reset(ctx);
+    }
+
+    this._objects.forEach((obj) => {
+      if (obj.cameraChild) {
+        obj.update(dt);
+        obj.draw(ctx);
+      }
+    });
   }
 
   get gameWindow() {
@@ -21,9 +71,7 @@ export class GameInstance {
     return this._gameLoop;
   }
 
-  init() {
-    this._gameLoop.awake(() => {
-      console.log("Game initialized and ready to run.");
-    });
+  get gameInputController() {
+    return this._gameInputController;
   }
 }

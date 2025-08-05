@@ -1,14 +1,17 @@
 export class GameInputController {
   constructor() {
-    this._callbacks = {};
+    this._keys = new Set();
+
     document.addEventListener("keydown", (e) => {
-      if (this._callbacks[e.key]) {
-        this._callbacks[e.key]();
-      }
+      this._keys.add(e.key);
+    });
+
+    document.addEventListener("keyup", (e) => {
+      this._keys.delete(e.key);
     });
   }
 
-  handleInput(key, callback) {
-    this._callbacks[key] = callback;
+  isKeyDown(key) {
+    return this._keys.has(key);
   }
 }
